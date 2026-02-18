@@ -5,9 +5,11 @@ const App = () => {
   const [notes, setNotes] = useState([]);
 
   function fetchNotes() {
-    axios.get("http://localhost:3000/api/notes").then((res) => {
-      setNotes(res.data.notes);
-    });
+    axios
+      .get("https://cohort-2-0-backend-2-hxta.onrender.com/api/notes")
+      .then((res) => {
+        setNotes(res.data.notes);
+      });
   }
 
   console.log("Hello integration");
@@ -24,7 +26,7 @@ const App = () => {
     console.log(title.value, description.value);
 
     axios
-      .post("http://localhost:3000/api/notes", {
+      .post("https://cohort-2-0-backend-2-hxta.onrender.com/api/notes", {
         title: title.value,
         description: description.value,
       })
@@ -35,10 +37,14 @@ const App = () => {
   }
 
   function handleDeleteNote(noteId) {
-    axios.delete("http://localhost:3000/api/notes/" + noteId).then((res) => {
-      console.log(res.data);
-      fetchNotes();
-    });
+    axios
+      .delete(
+        "https://cohort-2-0-backend-2-hxta.onrender.com/api/notes/" + noteId
+      )
+      .then((res) => {
+        console.log(res.data);
+        fetchNotes();
+      });
   }
 
   return (
