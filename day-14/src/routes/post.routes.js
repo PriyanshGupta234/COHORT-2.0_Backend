@@ -13,4 +13,17 @@ const upload = multer({
 /* /api/posts/ */
 postRouter.post("/", upload.single("image"), postController.createPostController)
 
+/*
+ * GET /api/posts/ [protected]
+ */
+
+postRouter.get("/", postController.getPostController)
+
+/*
+ * GET /api/posts/details/:postid [protected]
+ * - return an detail about specific post with the id. also check whether the posts belongs to the user that the request come from
+ */
+postRouter.get("/details:/postId", postController.getPostDetailsController)
+
+
 module.exports = postRouter
